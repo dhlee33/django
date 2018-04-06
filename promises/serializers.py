@@ -7,8 +7,9 @@ class PromiseSerializer(serializers.ModelSerializer):
 	def validate(self,value):
 		if value['sinceWhen']>value['tilWhen']:
 			raise serializers.ValidationError("tilWhen is faster than sinceWhen")
-		elif self.context['request'].user == value['user2']:
-			raise serializers.ValidationError("can't make promise self")
+		elif self.context['request'].method == 'POST': 
+			if self.context['request'].user == value['user2']:
+				raise serializers.ValidationError("can't make promise self")
 		return value
 
 	class Meta:
