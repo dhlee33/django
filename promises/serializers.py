@@ -14,7 +14,7 @@ class PromiseSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Promise
-		fields = ('id', 'created','title','sinceWhen','tilWhen','user1','user2')
+		fields = ('id', 'created','sinceWhen','tilWhen','user1','user2')
 
 class PromiseUpdateSerializer(PromiseSerializer):
 	class Meta(PromiseSerializer.Meta):
